@@ -84,6 +84,10 @@ python3 avimesa-tilt.py
 ```
 Now check your dashboard in Avimesa.Live. You should now be able to see your data on the charts and set alerts for SMS and emails.
 
+### Notes
+
+The script is set up so that it takes a reading every second. Actually, it does 2 readings for every second; 1 for each of the 2 data channels. Each reading counts as a message in the Avimesa system, so keep that in mind as to how many messages it'll consume over time so you that you don't blow through your free messages in a few days. In the `avimesa-tilt.py` script, look near the bottom for `sleep(1)` and set it accordingly. The value represents seconds, and will send a total of 2 messages in that time, since we're sending 1 for temperature and 1 for gravity. So, for example, a setting of `(1)` will consume 172,800 messages in 24 hours (2 messages x 1 second x 86,400 seconds). Adjust accordingly.
+
 
 [1]: https://tilthydrometer.com/
 [2]: https://raspberrypi.org/
