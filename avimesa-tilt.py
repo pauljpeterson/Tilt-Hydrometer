@@ -2,6 +2,7 @@
 # Written by Collin Hinson and Paul Peterson of Avimesa Corp.
 
 import subprocess
+import re
 
 from time import sleep
 
@@ -44,11 +45,14 @@ while True:
         idx_1 = my_str.find(sub_str_1)
         idx_2 = my_str.find(sub_str_2)
         read_1 = my_str[idx_1 + len(sub_str_1) : my_str.find(',', idx_1)]
-        read_2 = int(my_str[idx_2 + len(sub_str_2) : my_str.find(',', idx_2)]) / 1000
+        read_2 = my_str[idx_2 + len(sub_str_2) : my_str.find(',', idx_2)]
+        
+        # Make sure only alph/num chars are present
+        read_2_cleaned = re.sub('[\W_]+', '', read_2)
         
         # Inject the tilt temperature and gravity data into the dialtone data
         temperature_data = '{{"ch_idx":0,"ch_data":[{{"data_idx":0,"units":1,"val":{0}}}]}}\n'.format(read_1)
-        gravity_data = '{{"ch_idx":1,"ch_data":[{{"data_idx":0,"units":1,"val":{0}}}]}}\n'.format(read_2)
+        gravity_data  = '{{"ch_idx":1,"ch_data":[{{"data_idx":0,"units":1,"val":{0}}}]}}\n'.format(int(read_2_cleaned)/1000)
 
         # Encode the string (turn it into binary)
         temperature_data = temperature_data.encode()
