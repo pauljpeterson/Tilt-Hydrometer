@@ -4,7 +4,9 @@
 
 ## Connecting the Tilt Hydrometer to Avimesa's IoT platform
 
-This project allows you to remotely monitor your brew using a Tilt Hydrometer, a Raspberry Pi and Avimesa's IoT cloud platform and application, giving you real-time charts and the ability to set SMS and email alerts if the temperature or gravity readings hit a specified number. Using this Python script, we will read the data from the Tilt device and pipe it into Avimesa Gadget, which in turn sends the data to the Avimesa Cloud and ultimately displayed in the Avimesa.Live web application.
+This project allows you to remotely monitor your brew using a Tilt Hydrometer, a Raspberry Pi and Avimesa's IoT cloud platform and application, giving you real-time charts and the ability to set SMS and email alerts if the temperature or gravity readings hit a specified number. Using this Python script, we will read the data from the Tilt device and pipe it into Avimesa Gadget, which in turn sends the data to the Avimesa Cloud and ultimately displayed in the Avimesa.Live web application. 
+
+Note: You will need to leave your terminal window open if logging in remotely via SSH so that script doesn't terminate. There are things you can do to keep it running, however I have not explored them. Expect an updated version in the future to address this.
 
 ### Things you will need
 
